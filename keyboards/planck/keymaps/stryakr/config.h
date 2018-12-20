@@ -7,7 +7,6 @@
 #define BACKLIGHT_BREATHING
 #define PREVENT_STUCK_MODIFIERS
 
-
 /*
  * MIDI options
  */
