@@ -1,6 +1,6 @@
-# stryakr Layout
 
-![Layout](https://i.imgur.com/XxBtDBy.png "Stryakr Keymap")
+
+![Layout](https://i.imgur.com/XxBtDBy.png "antempus Keymap")
 
 -   Online keyboard layout editor: http://www.keyboard-layout-editor.com/#/gists/e77306f9d14cc93fa26123b93b106474
 -   Online keyboard layout editor (lower layer): http://www.keyboard-layout-editor.com/#/gists/786e03f6fbd274cb4f4e77a3d67f85fa
@@ -13,13 +13,13 @@ in the top level folder of the QMK Firmware
 \${rev} should be the version of the plank you are trying to flash
 
 ```
-$ make planck/${rev}:stryakr:dfu
+$ make planck/${rev}:antempus:dfu
 ```
 
 for example:
 
 ```
-$ make planck/rev4:stryakr:dfu
+$ make planck/rev4:antempu:dfu
 ```
 
 would build for the rev4 of the planck.
