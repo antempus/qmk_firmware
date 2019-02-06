@@ -19,25 +19,22 @@
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x6060
-#define DEVICE_VER      0x0006
-#define MANUFACTURER    QMK
-#define PRODUCT         Proton C
-#define DESCRIPTION     A compact ortholinear keyboard
+#define VENDOR_ID 0xFEED
+#define PRODUCT_ID 0x6060
+#define DEVICE_VER 0x0006
+#define MANUFACTURER QMK
+#define PRODUCT Proton C
+#define DESCRIPTION A compact ortholinear keyboard
 
 /* key matrix size */
 #define MATRIX_ROWS 5
 #define MATRIX_COLS 15
 
-#define MATRIX_ROW_PINS { A8, A7, A6, A5, A4 }
-#define MATRIX_COL_PINS { B0, B1, B2, B3, B4, B5, B6, B7, B8, A0, A1, A2, B10, B11, B12 }
-
+#define MATRIX_ROW_PINS  {B7, B6, B5, B4, B3}
+#define MATRIX_COL_PINS  {B2, B1, B0, B11, B9, A6, A7, A8, A15, A2, A1, A0, B8, B13, B10}
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 6
-
-
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 //#define LOCKING_SUPPORT_ENABLE
@@ -67,8 +64,7 @@
 
 /* key combination for magic key command */
 #define IS_COMMAND() ( \
-  keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \
-)
+    keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
 
 /*
  * Feature disable options
@@ -120,4 +116,3 @@
 // #define WS2812_DMA_STREAM STM32_DMA1_STREAM2  // DMA stream for TIMx_UP (look up in reference manual under DMA Channel selection)
 //#define WS2812_DMA_CHANNEL 7                  // DMA channel for TIMx_UP
 //#define WS2812_EXTERNAL_PULLUP
-

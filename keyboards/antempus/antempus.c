@@ -16,7 +16,8 @@
 
 #include "antempus.h"
 
-void matrix_init_kb(void) {
+void matrix_init_kb(void)
+{
   // Turn status LED on
   setPinOutput(C13);
   writePinHigh(C13);
