@@ -15,7 +15,6 @@
  */
 #include QMK_KEYBOARD_H
 
-// Minor change
 // Fillers to make layering more clear
 #define _______ KC_TRNS
 #define XXXXXXX KC_NO
