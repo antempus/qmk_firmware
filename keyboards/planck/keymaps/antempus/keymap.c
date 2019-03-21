@@ -22,22 +22,31 @@ extern keymap_config_t keymap_config;
 enum planck_layers
 {
   _QWERTY,
+<<<<<<< HEAD
   _COLEMAK,
   _DVORAK,
   _LOWER,
   _RAISE,
   _PLOVER,
+=======
+  _LOWER,
+  _RAISE,
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
   _ADJUST
 };
 
 enum planck_keycodes
 {
   QWERTY = SAFE_RANGE,
+<<<<<<< HEAD
   COLEMAK,
   DVORAK,
   PLOVER,
   BACKLIT,
   EXT_PLV
+=======
+  BACKLIT,
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
 };
 
 #define LOWER MO(_LOWER)
@@ -47,7 +56,11 @@ enum planck_keycodes
 #define XXXXXXX KC_NO
 
 // Func macro definitions.
+<<<<<<< HEAD
 #define SFT_TAB FUNC(0) // Tap for Enter, hold for Shift
+=======
+// #define SFT_TAB FUNC(0) // Tap for Enter, hold for Shift
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
 
 // Enable these functions using FUNC(n) macro.
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -65,6 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_QWERTY] = LAYOUT_planck_grid(
         KC_ESC, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
+<<<<<<< HEAD
         SFT_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_ENT,
         KC_LCTL, KC_LALT, KC_RALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT),
@@ -103,6 +117,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LSFT, KC_SCLN, KC_Q, KC_J, KC_K, KC_X, KC_B, KC_M, KC_W, KC_V, KC_Z, KC_ENT,
         BACKLIT, KC_LCTL, KC_LALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT),
 
+=======
+        KC_TAB, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
+        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, KC_ENT,
+        KC_LCTL, KC_LALT, KC_RALT, KC_LGUI, LOWER, KC_SPC, KC_SPC, RAISE, KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT),
+
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
     /* Lower
  * ,-----------------------------------------------------------------------------------.
  * |   `  |      |      |      |      |      |      |      |      |      |   (  |   )  |
@@ -135,6 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_GRV,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_BSLS, _______,
+<<<<<<< HEAD
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
 
     /* Plover layer (http://opensteno.org)
@@ -153,12 +174,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_LBRC,
         XXXXXXX, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
         EXT_PLV, XXXXXXX, XXXXXXX, KC_C, KC_V, XXXXXXX, XXXXXXX, KC_N, KC_M, XXXXXXX, XXXXXXX, XXXXXXX),
+=======
+        _______, _______, _______, _______, _______, _______, _______, _______, KC_MNXT, KC_VOLD, KC_VOLU, KC_MPLY),
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
 
     /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
  * |      | Reset|      |      |      |      |      |      |      |      |      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
+<<<<<<< HEAD
  * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|Plover|      |
+=======
+ * |      |      |      |Aud on|Audoff|AGnorm|AGswap|Qwerty||      |      |      |
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|Musoff|MIDIon|MIDIof|      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -167,17 +195,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_ADJUST] = LAYOUT_planck_grid(
         _______, RESET, DEBUG, RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD, RGB_VAI, RGB_VAD, KC_DEL,
+<<<<<<< HEAD
         _______, _______, MU_MOD, AU_ON, AU_OFF, AG_NORM, AG_SWAP, QWERTY, COLEMAK, DVORAK, PLOVER, _______,
+=======
+        _______, _______, MU_MOD, AU_ON, AU_OFF, AG_NORM, AG_SWAP, QWERTY, _______, _______, _______, _______,
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
         _______, MUV_DE, MUV_IN, MU_ON, MU_OFF, MI_ON, MI_OFF, TERM_ON, TERM_OFF, _______, _______, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______)
 
 };
 
+<<<<<<< HEAD
 #ifdef AUDIO_ENABLE
 float plover_song[][2] = SONG(PLOVER_SOUND);
 float plover_gb_song[][2] = SONG(PLOVER_GOODBYE_SOUND);
 #endif
 
+=======
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
 uint32_t layer_state_set_user(uint32_t state)
 {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
@@ -195,6 +230,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     }
     return false;
     break;
+<<<<<<< HEAD
   case COLEMAK:
     if (record->event.pressed)
     {
@@ -209,6 +245,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     }
     return false;
     break;
+=======
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
   case BACKLIT:
     if (record->event.pressed)
     {
@@ -229,6 +267,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
     }
     return false;
     break;
+<<<<<<< HEAD
   case PLOVER:
     if (record->event.pressed)
     {
@@ -258,6 +297,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
 #endif
       layer_off(_PLOVER);
     }
+=======
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
     return false;
     break;
   }
@@ -329,16 +370,22 @@ void dip_update(uint8_t index, bool active)
   case 0:
     if (active)
     {
+<<<<<<< HEAD
 #ifdef AUDIO_ENABLE
       PLAY_SONG(plover_song);
 #endif
+=======
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
       layer_on(_ADJUST);
     }
     else
     {
+<<<<<<< HEAD
 #ifdef AUDIO_ENABLE
       PLAY_SONG(plover_gb_song);
 #endif
+=======
+>>>>>>> a41f98fd033f2b6ee22794972b722d437123f521
       layer_off(_ADJUST);
     }
     break;
