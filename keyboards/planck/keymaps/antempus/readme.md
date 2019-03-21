@@ -13,7 +13,7 @@ in the top level folder of the QMK Firmware
 \${rev} should be the version of the plank you are trying to flash
 
 ```
-$ make planck/${rev}:stryakr:dfu
+$ make planck/${rev}:antempus:dfu
 ```
 
 for example:
