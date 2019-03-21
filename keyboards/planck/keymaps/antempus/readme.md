@@ -19,7 +19,7 @@ $ make planck/${rev}:stryakr:dfu
 for example:
 
 ```
-$ make planck/rev4:stryakr:dfu
+$ make planck/rev4:antempus:dfu
 ```
 
 would build for the rev4 of the planck.
