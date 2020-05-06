@@ -1,19 +1,16 @@
-#ifndef CONFIG_USER_H
-#define CONFIG_USER_H
-
-#include "config_common.h"
+#pragma once
 
 #ifdef AUDIO_ENABLE
-    #define STARTUP_SONG SONG(PREONIC_SOUND)
-    // #define STARTUP_SONG SONG(NO_SOUND)
+#define STARTUP_SONG SONG(PLANCK_SOUND)
+// #define STARTUP_SONG SONG(NO_SOUND)
 
-    #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND), \
-                                  SONG(COLEMAK_SOUND), \
-                                  SONG(DVORAK_SOUND) \
-                                }
+#define DEFAULT_LAYER_SONGS  \
+  {                          \
+    SONG(QWERTY_SOUND),      \
+        SONG(COLEMAK_SOUND), \
+        SONG(DVORAK_SOUND)   \
+  }
 #endif
-
-#define MUSIC_MASK (keycode != KC_NO)
 
 /*
  * MIDI options
@@ -39,4 +36,7 @@
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
 //#define MIDI_TONE_KEYCODE_OCTAVES 2
 
-#endif
+// Most tactile encoders have detents every 4 stages
+#define ENCODER_RESOLUTION 4
+
+#define MIDI_BASIC

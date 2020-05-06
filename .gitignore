@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 .history/
+=======
+.vscode/*
+>>>>>>> ab4184f0c6df4f37d7c77fdd8238322fa9a44700
 .dep
 *.o
 *.bin

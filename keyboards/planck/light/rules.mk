@@ -33,5 +33,9 @@ API_SYSEX_ENABLE = no
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
 
+<<<<<<< HEAD
 LAYOUTS = ortho_4x12 planck_mit
 LAYOUTS_HAS_RGB = no
+=======
+MCU = at90usb1286
+>>>>>>> ab4184f0c6df4f37d7c77fdd8238322fa9a44700
