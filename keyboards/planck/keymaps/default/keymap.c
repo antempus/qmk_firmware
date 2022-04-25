@@ -1,4 +1,4 @@
-/* Copyright 2015-2017 Jack Humbert
+/* Copyright 2015-2021 Jack Humbert
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
+ * | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  '   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * | Tab  |   Q  |   W  |   F  |   P  |   G  |   J  |   L  |   U  |   Y  |   ;  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Esc  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
+ * | Esc  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  '   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* Dvorak
  * ,-----------------------------------------------------------------------------------.
- * | Tab  |   "  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Bksp |
+ * | Tab  |   '  |   ,  |   .  |   P  |   Y  |   F  |   G  |   C  |   R  |   L  | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Esc  |   A  |   O  |   E  |   U  |   I  |   D  |   H  |   T  |   N  |   S  |  /   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -146,12 +146,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT,
         EXT_PLV, XXXXXXX, XXXXXXX, KC_C, KC_V, XXXXXXX, XXXXXXX, KC_N, KC_M, XXXXXXX, XXXXXXX, XXXXXXX),
 
-<<<<<<< HEAD
-/* Adjust (Lower + Raise)
- *                      v------------------------RGB CONTROL--------------------v
-=======
     /* Adjust (Lower + Raise)
->>>>>>> ab4184f0c6df4f37d7c77fdd8238322fa9a44700
  * ,-----------------------------------------------------------------------------------.
  * |      | Reset|Debug | RGB  |RGBMOD| HUE+ | HUE- | SAT+ | SAT- |BRGTH+|BRGTH-|  Del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -175,77 +170,11 @@ float plover_song[][2] = SONG(PLOVER_SOUND);
 float plover_gb_song[][2] = SONG(PLOVER_GOODBYE_SOUND);
 #endif
 
-<<<<<<< HEAD
-layer_state_t layer_state_set_user(layer_state_t state) {
-=======
 uint32_t layer_state_set_user(uint32_t state)
 {
->>>>>>> ab4184f0c6df4f37d7c77fdd8238322fa9a44700
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-<<<<<<< HEAD
-bool process_record_user(uint16_t keycode, keyrecord_t *record)
-{
-  switch (keycode)
-  {
-  case QWERTY:
-    if (record->event.pressed)
-    {
-      print("mode just switched to qwerty and this is a huge string\n");
-      set_single_persistent_default_layer(_QWERTY);
-    }
-    return false;
-    break;
-  case COLEMAK:
-    if (record->event.pressed)
-    {
-      set_single_persistent_default_layer(_COLEMAK);
-    }
-    return false;
-    break;
-  case DVORAK:
-    if (record->event.pressed)
-    {
-      set_single_persistent_default_layer(_DVORAK);
-    }
-    return false;
-    break;
-  case BACKLIT:
-    if (record->event.pressed)
-    {
-      register_code(KC_RSFT);
-#ifdef BACKLIGHT_ENABLE
-      backlight_step();
-#endif
-#ifdef KEYBOARD_planck_rev5
-      PORTE &= ~(1 << 6);
-#endif
-    }
-    else
-    {
-      unregister_code(KC_RSFT);
-#ifdef KEYBOARD_planck_rev5
-      PORTE |= (1 << 6);
-#endif
-    }
-    return false;
-    break;
-  case PLOVER:
-    if (record->event.pressed)
-    {
-#ifdef AUDIO_ENABLE
-      stop_all_notes();
-      PLAY_SONG(plover_song);
-#endif
-      layer_off(_RAISE);
-      layer_off(_LOWER);
-      layer_off(_ADJUST);
-      layer_on(_PLOVER);
-      if (!eeconfig_is_enabled())
-      {
-        eeconfig_init();
-=======
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case QWERTY:
@@ -309,7 +238,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           PLAY_SONG(plover_gb_song);
         #endif
         layer_off(_PLOVER);
->>>>>>> 6aae926b5f90f9e05e4dd022a5b94f0ab52c8614
       }
       keymap_config.raw = eeconfig_read_keymap();
       keymap_config.nkro = 1;
@@ -337,14 +265,10 @@ uint16_t muse_counter = 0;
 uint8_t muse_offset = 70;
 uint16_t muse_tempo = 50;
 
-void encoder_update(bool clockwise)
-{
-  if (muse_mode)
-  {
-    if (IS_LAYER_ON(_RAISE))
-    {
-      if (clockwise)
-      {
+bool encoder_update_user(uint8_t index, bool clockwise) {
+  if (muse_mode) {
+    if (IS_LAYER_ON(_RAISE)) {
+      if (clockwise) {
         muse_offset++;
       }
       else
@@ -363,21 +287,6 @@ void encoder_update(bool clockwise)
         muse_tempo -= 1;
       }
     }
-<<<<<<< HEAD
-  } else {
-    if (clockwise) {
-      #ifdef MOUSEKEY_ENABLE
-        tap_code(KC_MS_WH_DOWN);
-      #else
-        tap_code(KC_PGDN);
-      #endif
-    } else {
-      #ifdef MOUSEKEY_ENABLE
-        tap_code(KC_MS_WH_UP);
-      #else
-        tap_code(KC_PGUP);
-      #endif
-=======
   }
   else
   {
@@ -400,13 +309,13 @@ void encoder_update(bool clockwise)
       register_code(KC_PGUP);
       unregister_code(KC_PGUP);
 #endif
->>>>>>> ab4184f0c6df4f37d7c77fdd8238322fa9a44700
     }
   }
+    return true;
 }
 
-<<<<<<< HEAD
-void dip_switch_update_user(uint8_t index, bool active) {
+
+bool dip_switch_update_user(uint8_t index, bool active) {
     switch (index) {
         case 0: {
 #ifdef AUDIO_ENABLE
@@ -435,6 +344,7 @@ void dip_switch_update_user(uint8_t index, bool active) {
                 muse_mode = false;
             }
     }
+    return true;
 }
 
 void matrix_scan_user(void) {
@@ -455,7 +365,6 @@ void matrix_scan_user(void) {
             muse_counter = 0;
         }
     }
-=======
 void dip_update(uint8_t index, bool active)
 {
   switch (index)
@@ -508,7 +417,6 @@ void matrix_scan_user(void)
     }
     muse_counter = (muse_counter + 1) % muse_tempo;
   }
->>>>>>> ab4184f0c6df4f37d7c77fdd8238322fa9a44700
 #endif
 }
 
