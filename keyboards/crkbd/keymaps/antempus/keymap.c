@@ -40,11 +40,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,   KC_DEL,
+      KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,XXXXXXX,
+      KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT,  KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,                      KC_MPRV, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MPRV, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
   //|--------+--------+--------+--------+--------+ --------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                            KC_LGUI, _______, TD_SPC,    KC_SPC, MO(3),  KC_LCTL
                                       //`--------------------------'  `--------------------------'
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                      KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_TAB,  KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, XXXXXXX,
+      KC_TAB,  KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS,                      XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
@@ -138,12 +138,12 @@ void oled_render_keylog(void) {
     oled_write(keylog_str, false);
 }
 
-// void oled_render_rgb_status(void) {
-//     oled_write_ln("RGB:", false);
-//     static char temp[20] = {0};
-//     snprintf(temp, sizeof(temp) + 1, "M:%3dH:%3dS:%3dV:%3d", rgb_matrix_config.mode, rgb_matrix_config.hsv.h, rgb_matrix_config.hsv.s, rgb_matrix_config.hsv.v);
-//     oled_write(temp, false);
-// }
+void oled_render_rgb_status(void) {
+    oled_write_ln("RGB:", false);
+    static char temp[20] = {0};
+    // snprintf(temp, sizeof(temp) + 1, "M:%3dH:%3dS:%3dV:%3d", rgb_matrix_config.mode, rgb_matrix_config.hsv.h, rgb_matrix_config.hsv.s, rgb_matrix_config.hsv.v);
+    oled_write(temp, false);
+}
 
 void render_bootmagic_status(bool status) {
     /* Show Ctrl-Gui Swap options */
@@ -173,9 +173,8 @@ bool oled_task_user(void) {
     if (is_keyboard_master()) {
         oled_render_layer_state();
         oled_render_keylog();
-        // oled_render_rgb_status();
     } else {
-        oled_render_logo();
+        oled_render_rgb_status();
     }
     return false;
 }
