@@ -1,9 +1,3 @@
-# MCU name
-MCU = at90usb1286
-
-# Bootloader selection
-BOOTLOADER = atmel-dfu
-
 # Build Options
 #   change yes to no to disable
 #
@@ -18,11 +12,7 @@ MIDI_ENABLE = yes           # MIDI support
 AUDIO_ENABLE = yes           # Audio output
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 RGB_MATRIX_ENABLE = yes
-RGB_MATRIX_DRIVER = IS31FL3731
 
-<<<<<<< HEAD
 LAYOUTS = ortho_4x12 planck_mit
 LAYOUTS_HAS_RGB = no
-=======
 MCU = at90usb1286
->>>>>>> ab4184f0c6df4f37d7c77fdd8238322fa9a44700
