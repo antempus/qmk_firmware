@@ -13,4 +13,6 @@ AUDIO_ENABLE = yes           # Audio output
 RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.
 RGB_MATRIX_ENABLE = yes
 
+LAYOUTS = ortho_4x12 planck_mit
 LAYOUTS_HAS_RGB = no
+MCU = at90usb1286
