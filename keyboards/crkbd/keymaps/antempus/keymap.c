@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Following line allows macro to read current RGB settings
 extern rgblight_config_t rgblight_config;
 #endif
-#define TD_SPC MT(MOD_LALT, KC_SPC) // space on tap, LGUI on hold
+#define TD_SPC TD(MOD_LALT, TD_SPC) // space on tap, LGUI on hold
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
@@ -33,7 +33,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_LGUI, MO(1), TD_SPC,     KC_SPC, MO(2),  KC_LCTL
+                                           KC_LCTL, MO(1), TD_SPC,     TD_SPC, MO(2),  KC_LGUI
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MPRV, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
   //|--------+--------+--------+--------+--------+ --------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_LGUI, _______, TD_SPC,    KC_SPC, MO(3),  KC_LCTL
+                                           KC_LCTL, _______, KC_SPC,    TD_SPC, MO(3),  KC_LGUI
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -58,7 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, MO(3), TD_SPC,     KC_SPC, _______,  KC_LCTL
+                                          KC_LCTL, MO(3), KC_SPC,     TD_SPC, _______,  KC_LGUI
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MOD_LGUI, _______, TD_SPC,     KC_SPC, _______, KC_LCTL
+                                          KC_LCTL, _______, KC_SPC,     TD_SPC, _______, MOD_LGUI
                                       //`--------------------------'  `--------------------------'
   )
 };
