@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_LCTL, MO(1), KC_SPC,     KC_SPC, MO(2),  KC_LGUI
+                                           KC_LGUI, MO(1), KC_SPC,     KC_LALT, MO(2),  KC_LCTL
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -55,9 +55,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MPRV, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
+      KC_LSFT, KC_F11, KC_F12, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MPRV, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
   //|--------+--------+--------+--------+--------+ --------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_LCTL, _______, KC_SPC,    KC_LALT, MO(3),  KC_LGUI
+                                           KC_LGUI, _______, KC_SPC,    KC_LALT, MO(3),  KC_LCTL
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LCTL, MO(3), KC_SPC,     KC_SPC, _______,  KC_LGUI
+                                          KC_LGUI, MO(3), KC_SPC,     KC_LALT, _______,  KC_LCTL
                                       //`--------------------------'  `--------------------------'
   ),
 
