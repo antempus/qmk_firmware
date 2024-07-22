@@ -27,6 +27,12 @@ extern rgblight_config_t rgblight_config;
 //     TD_SPC_LALT,
 // };
 
+enum custom_keycodes {
+    FULL_SNAP = SAFE_RANGE,
+    LEFT_SNAP,
+    RIGHT_SNAP
+};
+
 
 // tap_dance_action_t tap_dance_actions[] = {
 //     [TD_SPC_LALT] = ACTION_TAP_DANCE_DOUBLE(KC_SPC, KC_LALT) // Tap: Space, Hold: LAlt
@@ -42,7 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,  KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,   KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           KC_LCTL, MO(1), KC_LALT,     KC_SPC, MO(2),  KC_LGUI
+                                           MO(1), KC_LCTL,  KC_LALT,     KC_SPC,  KC_LGUI, MO(2)
                                       //`--------------------------'  `--------------------------'
 
   ),
@@ -53,9 +59,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_TAB,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                        KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LSFT, KC_F11, KC_F12, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MPRV, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
+      KC_LSFT, KC_F11, KC_F12, XXXXXXX, XXXXXXX, XXXXXXX,                        KC_MPRV, KC_MPLY, KC_VOLD, KC_VOLU, KC_MNXT, XXXXXXX,
   //|--------+--------+--------+--------+--------+ --------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                           _______, _______, _______,    _______, MO(3),  _______
+                                           _______, _______, _______,    _______, _______,  MO(3)
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -67,13 +73,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          _______, MO(3), _______,     _______, _______,  _______
+                                          MO(3), _______, _______,     _______, _______,  _______
                                       //`--------------------------'  `--------------------------'
   ),
 
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      QK_BOOT, XXXXXXX, XXXXXXX, CG_SWAP, CG_NORM, CG_TOGG,                    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      QK_BOOT, XXXXXXX, XXXXXXX, CG_SWAP, CG_NORM, CG_TOGG,                     FULL_SNAP, LEFT_SNAP, RIGHT_SNAP, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -205,5 +211,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   #ifdef CONSOLE_ENABLE
     uprintf("KL: kc: 0x%04X, col: %2u, row: %2u, pressed: %u, time: %5u, int: %u, count: %u\n", keycode, record->event.key.col, record->event.key.row, record->event.pressed, record->event.time, record->tap.interrupted, record->tap.count);
   #endif
+  switch (keycode) {
+  case FULL_SNAP:
+    if (record->event.pressed){
+        register_code(KC_LALT);
+        register_code(KC_LCTL);
+        tap_code(KC_ENT);
+        unregister_code(KC_LALT);
+        unregister_code(KC_LCTL);
+    }
+    break;
+
+  case LEFT_SNAP:
+    if (record->event.pressed){
+        register_code(KC_LALT);
+        register_code(KC_LCTL);
+        tap_code(KC_LEFT);
+        unregister_code(KC_LALT);
+        unregister_code(KC_LCTL);
+    }
+    break;
+
+  case RIGHT_SNAP:
+    if (record->event.pressed){
+        register_code(KC_LALT);
+        register_code(KC_LCTL);
+        tap_code(KC_RIGHT);
+        unregister_code(KC_LALT);
+        unregister_code(KC_LCTL);
+    }
+    break;
+  }
   return true;
 }
